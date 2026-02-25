@@ -61,6 +61,11 @@ body{
 
 /* ================= CONTENT ================= */
 
+.content{
+  display:flex;
+  flex-direction:column;
+}
+
 .content h1{
   font-size:42px;
   font-weight:700;
@@ -147,7 +152,7 @@ body{
   font-size:14px;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE FIX ================= */
 
 @media(max-width:768px){
 
@@ -158,14 +163,24 @@ body{
     padding:35px 20px;
   }
 
-  .image-wrapper::before{
-    width:190px;
-    height:190px;
-    top:-55px;
-    left:-45px;
+  .content{
+    align-items:center;
   }
 
-  .profile-img{width:270px}
+  .line{
+    margin:18px auto 30px;
+  }
+
+  .image-wrapper::before{
+    width:200px;
+    height:200px;
+    top:-60px;
+    left:-70px;
+  }
+
+  .profile-img{
+    width:280px;
+  }
 
   .content h1{
     font-size:30px;
@@ -174,11 +189,16 @@ body{
 
   .mobile-break{display:inline}
 
-  .buttons{justify-content:center}
-  .socials{justify-content:center}
+  .buttons{
+    justify-content:center;
+  }
+
+  .socials{
+    justify-content:center;
+  }
 }
 
-/* ================= CUSTOM CURSOR (Desktop Only) ================= */
+/* ================= DESKTOP EFFECTS ================= */
 
 @media(min-width:769px){
 
@@ -247,7 +267,7 @@ body{
 
 <script>
 
-/* ===== Rename Download ===== */
+/* Download Rename */
 function downloadFile(e,url,filename){
   e.preventDefault();
   fetch(url)
@@ -260,7 +280,7 @@ function downloadFile(e,url,filename){
     });
 }
 
-/* ===== Desktop Effects ===== */
+/* Desktop Only Effects */
 if(window.innerWidth>768){
 
   const wrapper=document.getElementById("imageWrapper");
@@ -276,19 +296,6 @@ if(window.innerWidth>768){
   wrapper.addEventListener("mouseleave",()=>{
     wrapper.style.setProperty("--moveX","0px");
     wrapper.style.setProperty("--moveY","0px");
-    wrapper.style.setProperty("--circleScale","1");
-  });
-
-  wrapper.addEventListener("mouseenter",()=>{
-    wrapper.style.setProperty("--circleScale","1.04");
-  });
-
-  wrapper.addEventListener("mousedown",()=>{
-    wrapper.style.setProperty("--circleScale","0.96");
-  });
-
-  wrapper.addEventListener("mouseup",()=>{
-    wrapper.style.setProperty("--circleScale","1.04");
   });
 
   const cursor=document.createElement("div");
