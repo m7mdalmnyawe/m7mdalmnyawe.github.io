@@ -96,26 +96,33 @@ body {
 
 .primary:hover { background: #f3cf70; }
 
-/* ===== Social Icons ===== */
+/* ===== Premium Social Icons ===== */
 
 .socials {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 30px;
 }
 
 .socials a {
-  font-size: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1f2a26;
   color: #1f2a26;
-  transition: 0.3s ease;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .socials a:hover {
-  color: #FBDC86;
-  transform: translateY(-4px);
+  background: #FBDC86;
+  border-color: #FBDC86;
+  transform: translateY(-5px);
 }
-
-/* Contact */
 
 .contact a {
   color: #3e5e54;
