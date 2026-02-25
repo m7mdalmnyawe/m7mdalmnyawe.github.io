@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohammed Almnyawe — Jr. Art Director</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -94,7 +94,6 @@ body{
   display:flex;
   gap:12px;
   margin-bottom:30px;
-  flex-wrap:wrap;
 }
 
 .btn{
@@ -105,6 +104,7 @@ body{
   font-size:14px;
   color:#1f2a26;
   transition:.25s ease;
+  white-space:nowrap;
 }
 
 .btn:hover{transform:translateY(-3px)}
@@ -152,7 +152,7 @@ body{
   font-size:14px;
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
@@ -172,10 +172,10 @@ body{
   }
 
   .image-wrapper::before{
-    width:200px;
-    height:200px;
-    top:-60px;
-    left:-70px;
+    width:180px;
+    height:180px;
+    top:-40px;
+    left:-45px;
   }
 
   .profile-img{
@@ -191,6 +191,13 @@ body{
 
   .buttons{
     justify-content:center;
+    gap:8px;
+  }
+
+  .btn{
+    flex:1;
+    font-size:13px;
+    padding:10px 6px;
   }
 
   .socials{
@@ -267,7 +274,7 @@ body{
 
 <script>
 
-/* Download Rename */
+/* Rename Download */
 function downloadFile(e,url,filename){
   e.preventDefault();
   fetch(url)
@@ -296,6 +303,14 @@ if(window.innerWidth>768){
   wrapper.addEventListener("mouseleave",()=>{
     wrapper.style.setProperty("--moveX","0px");
     wrapper.style.setProperty("--moveY","0px");
+  });
+
+  wrapper.addEventListener("mouseenter",()=>{
+    wrapper.style.setProperty("--circleScale","1.04");
+  });
+
+  wrapper.addEventListener("mouseleave",()=>{
+    wrapper.style.setProperty("--circleScale","1");
   });
 
   const cursor=document.createElement("div");
