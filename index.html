@@ -31,6 +31,8 @@ body {
 
 .image-wrapper {
   position: relative;
+  --moveX: 0px;
+  --moveY: 0px;
 }
 
 .image-wrapper::before {
@@ -43,6 +45,9 @@ body {
   top: -50px;
   left: -60px;
   z-index: 0;
+
+  transform: translate(var(--moveX), var(--moveY));
+  transition: transform 0.25s ease-out;
 }
 
 .profile-img {
@@ -152,7 +157,6 @@ body {
     padding: 35px 20px;
   }
 
-  /* ضبط الدايرة زي نسخة الويب */
   .image-wrapper::before {
     width: 190px;
     height: 190px;
@@ -174,18 +178,9 @@ body {
 
   .line { margin: 14px auto 22px; }
 
-  .buttons {
-    justify-content: center;
-  }
+  .buttons { justify-content: center; }
 
-  .btn {
-    font-size: 13px;
-    padding: 9px 14px;
-  }
-
-  .socials {
-    justify-content: center;
-  }
+  .socials { justify-content: center; }
 }
 
 </style>
@@ -195,7 +190,7 @@ body {
 
 <section class="hero">
 
-  <div class="image-wrapper">
+  <div class="image-wrapper" id="imageWrapper">
     <img src="profile.png" alt="Mohammed Almnyawe" class="profile-img">
   </div>
 
@@ -252,6 +247,7 @@ body {
 </section>
 
 <script>
+/* ========= Download Rename ========= */
 function downloadFile(e, url, filename) {
   e.preventDefault();
   fetch(url)
@@ -262,6 +258,25 @@ function downloadFile(e, url, filename) {
       link.download = filename;
       link.click();
     });
+}
+
+/* ========= Subtle Circle Parallax (Desktop Only) ========= */
+if (window.innerWidth > 768) {
+  const wrapper = document.getElementById("imageWrapper");
+
+  wrapper.addEventListener("mousemove", (e) => {
+    const rect = wrapper.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / 20;
+    const y = (e.clientY - rect.top - rect.height / 2) / 20;
+
+    wrapper.style.setProperty("--moveX", x + "px");
+    wrapper.style.setProperty("--moveY", y + "px");
+  });
+
+  wrapper.addEventListener("mouseleave", () => {
+    wrapper.style.setProperty("--moveX", "0px");
+    wrapper.style.setProperty("--moveY", "0px");
+  });
 }
 </script>
 
