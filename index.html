@@ -194,7 +194,8 @@ body{
 
   .btn{
     font-size:14px;
-    padding:12px 10px;
+    padding:14px 14px;
+    border-radius:8px;
   }
 
   .socials{
@@ -217,6 +218,12 @@ body{
     pointer-events:none;
     transform:translate(-50%,-50%);
     z-index:9999;
+    transition:all .15s ease;
+  }
+
+  .custom-cursor.click{
+    box-shadow:0 0 0 8px rgba(251,220,134,0.4);
+    transform:translate(-50%,-50%) scale(1.8);
   }
 }
 
@@ -300,6 +307,14 @@ if(window.innerWidth>768){
   document.addEventListener("mousemove",(e)=>{
     cursor.style.left=e.clientX+"px";
     cursor.style.top=e.clientY+"px";
+  });
+
+  document.addEventListener("mousedown",()=>{
+    cursor.classList.add("click");
+  });
+
+  document.addEventListener("mouseup",()=>{
+    cursor.classList.remove("click");
   });
 
 }
