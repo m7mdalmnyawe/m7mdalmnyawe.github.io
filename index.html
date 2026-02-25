@@ -42,7 +42,7 @@ body {
 }
 
 .profile-img {
-  width: 420px;
+  width: 400px;
   position: relative;
   z-index: 1;
   filter: drop-shadow(0 25px 50px rgba(0,0,0,0.08));
@@ -51,7 +51,7 @@ body {
 .content h1 {
   font-size: 42px;
   font-weight: 700;
-  margin: 0 0 10px;
+  margin: -10px 0 8px; /* قربناه من الصورة */
 }
 
 .mobile-break { display: none; }
@@ -67,20 +67,20 @@ body {
   width: 40px;
   height: 2px;
   background: #7fa397;
-  margin: 20px 0 35px;
+  margin: 18px 0 30px;
 }
 
-/* Buttons Layout */
+/* Buttons */
 
 .buttons {
   display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
 .btn {
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: 6px;
   border: 1px solid #1f2a26;
   text-decoration: none;
@@ -100,12 +100,7 @@ body {
 
 .primary:hover { background: #f3cf70; }
 
-/* Hire button alone */
-.hire-wrapper {
-  margin-bottom: 30px;
-}
-
-/* Social Icons */
+/* Social */
 
 .socials {
   display: flex;
@@ -147,35 +142,34 @@ body {
   .hero {
     flex-direction: column;
     text-align: center;
-    gap: 40px;
-    padding: 40px 20px;
+    gap: 30px;
+    padding: 35px 20px;
   }
 
-  /* الدايرة تطلع بره أكتر */
+  /* الدايرة طالعة بره ومتوازنة */
   .image-wrapper::before {
-    width: 180px;
-    height: 180px;
-    top: -40px;
-    left: -60px;
+    width: 170px;
+    height: 170px;
+    top: -35px;
+    left: -70px;
   }
 
-  .profile-img { width: 300px; }
+  .profile-img {
+    width: 270px; /* صغرنا الصورة */
+  }
 
   .content h1 {
-    font-size: 32px;
+    font-size: 30px;
     line-height: 1.2;
+    margin-top: -5px;
   }
 
   .mobile-break { display: inline; }
 
-  .line { margin: 15px auto 25px; }
+  .line { margin: 14px auto 22px; }
 
+  /* التلاتة أزرار جنب بعض */
   .buttons {
-    justify-content: center;
-  }
-
-  .hire-wrapper {
-    display: flex;
     justify-content: center;
   }
 
@@ -209,7 +203,6 @@ body {
     <div class="role">JR. ART DIRECTOR</div>
     <div class="line"></div>
 
-    <!-- CV & Portfolio -->
     <div class="buttons">
       <a href="cv.pdf"
          onclick="downloadFile(event, 'cv.pdf', 'Mohammed Almnyawe - Resume 2026.pdf')"
@@ -222,10 +215,7 @@ body {
          class="btn">
         Download Portfolio
       </a>
-    </div>
 
-    <!-- Hire Alone -->
-    <div class="hire-wrapper">
       <a href="https://wa.me/201050004005?text=Hello%20Mohammed,%20I%20saw%20your%20website%20and%20would%20like%20to%20work%20with%20you."
          target="_blank"
          class="btn primary">
