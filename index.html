@@ -28,7 +28,7 @@ body {
   padding: 40px;
 }
 
-/* ===== IMAGE SECTION ===== */
+/* IMAGE SECTION */
 
 .image-wrapper {
   position: relative;
@@ -39,7 +39,7 @@ body {
   position: absolute;
   width: 240px;
   height: 240px;
-  background: #FBDC86; /* اللون الصح */
+  background: #FBDC86;
   border-radius: 50%;
   top: -50px;
   left: -60px;
@@ -53,7 +53,7 @@ body {
   filter: drop-shadow(0 25px 50px rgba(0,0,0,0.08));
 }
 
-/* ===== TEXT SECTION ===== */
+/* TEXT SECTION */
 
 .content h1 {
   font-size: 48px;
@@ -75,7 +75,7 @@ body {
   margin: 20px 0 35px;
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 
 .buttons {
   display: flex;
@@ -99,7 +99,7 @@ body {
 }
 
 .primary {
-  background: #FBDC86; /* اللون الصح */
+  background: #FBDC86;
   border: none;
   font-weight: 600;
 }
@@ -108,7 +108,7 @@ body {
   background: #f3cf70;
 }
 
-/* ===== CONTACT ===== */
+/* CONTACT */
 
 .contact a {
   color: #3e5e54;
@@ -121,7 +121,7 @@ body {
   opacity: 0.7;
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 
 @media (max-width: 950px) {
   .hero {
@@ -158,8 +158,18 @@ body {
     <div class="line"></div>
 
     <div class="buttons">
-      <a href="cv.pdf" download class="btn">Download CV</a>
-      <a href="portfolio.pdf" download class="btn">Download Portfolio</a>
+      <a href="cv.pdf"
+         download="Mohammed Almnyawe - Resume 2026.pdf"
+         class="btn">
+        Download CV
+      </a>
+
+      <a href="portfolio.pdf"
+         download="Mohammed Almnyawe - Portfolio 2026.pdf"
+         class="btn">
+        Download Portfolio
+      </a>
+
       <a href="https://wa.me/201050004005?text=Hello%20Mohammed,%20I%20saw%20your%20website%20and%20would%20like%20to%20work%20with%20you."
          target="_blank"
          class="btn primary">
