@@ -1,137 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mohammed Almnyawe — Jr. Art Director</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammed Almnyawe — Jr. Art Director</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #eef2ef;
-      color: #1f2a26;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .container {
-      animation: fadeUp 1.1s ease forwards;
-      opacity: 0;
-      transform: translateY(14px);
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #eef2ef;
+  color: #1f2a26;
+}
 
-    h1 {
-      font-size: 42px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.6px;
-    }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  padding: 40px;
+}
 
-    .role {
-      font-size: 15px;
-      color: #4f6b60;
-      margin-bottom: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+/* ===== IMAGE SECTION ===== */
 
-    .accent {
-      width: 40px;
-      height: 2px;
-      background: #7fa397;
-      margin: 20px auto;
-      border-radius: 2px;
-    }
+.image-wrapper {
+  position: relative;
+}
 
-    .soon {
-      font-size: 14px;
-      color: #6b857b;
-      margin-bottom: 18px;
-    }
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: #E7C56B;
+  border-radius: 50%;
+  top: -50px;
+  left: -60px;
+  z-index: 0;
+}
 
-    .contact a {
-      font-size: 14px;
-      color: #3e5e54;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(62,94,84,0.35);
-    }
+.profile-img {
+  width: 420px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 25px 50px rgba(0,0,0,0.08));
+}
 
-    .contact a:hover {
-      opacity: 0.7;
-    }
+/* ===== TEXT SECTION ===== */
 
-    /* ===== Buttons ===== */
+.content h1 {
+  font-size: 48px;
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
 
-    .buttons {
-      margin-top: 30px;
-    }
+.role {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #4f6b60;
+}
 
-    .btn {
-      display: inline-block;
-      margin: 6px;
-      padding: 9px 16px;
-      font-size: 13px;
-      text-decoration: none;
-      border-radius: 5px;
-      border: 1px solid #1f2a26;
-      color: #1f2a26;
-      transition: 0.25s ease;
-    }
+.line {
+  width: 40px;
+  height: 2px;
+  background: #7fa397;
+  margin: 20px 0 35px;
+}
 
-    .btn:hover {
-      background: #1f2a26;
-      color: #fff;
-    }
+/* ===== BUTTONS ===== */
 
-    .primary {
-      background: #1f2a26;
-      color: #fff;
-    }
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
 
-    .primary:hover {
-      opacity: 0.85;
-    }
+.btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid #1f2a26;
+  text-decoration: none;
+  font-size: 14px;
+  color: #1f2a26;
+  transition: 0.25s ease;
+}
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.primary {
+  background: #E7C56B;
+  border: none;
+  font-weight: 600;
+}
+
+.primary:hover {
+  opacity: 0.9;
+}
+
+/* ===== CONTACT ===== */
+
+.contact a {
+  color: #3e5e54;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(62,94,84,0.3);
+  font-size: 14px;
+}
+
+.contact a:hover {
+  opacity: 0.7;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 950px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .image-wrapper::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
+
+<section class="hero">
+
+  <!-- IMAGE -->
+  <div class="image-wrapper">
+    <img src="profile.png" alt="Mohammed Almnyawe" class="profile-img">
+  </div>
+
+  <!-- TEXT -->
+  <div class="content">
     <h1>Mohammed Almnyawe</h1>
-    <div class="role">Jr. Art Director</div>
+    <div class="role">JR. ART DIRECTOR</div>
+    <div class="line"></div>
 
-    <div class="accent"></div>
-
-    <div class="soon">Portfolio website coming soon</div>
-
-    <div class="contact">
-      <a href="mailto:contact@mnyawe.com">contact@mnyawe.com</a>
-    </div>
-
-    <!-- Buttons -->
     <div class="buttons">
       <a href="cv.pdf" download class="btn">Download CV</a>
       <a href="portfolio.pdf" download class="btn">Download Portfolio</a>
-      <a href="https://wa.me/201050004005?text=Hello%20Mohammed%2C%20I%20would%20like%20to%20hire%20you." 
-         target="_blank" 
+      <a href="https://wa.me/201050004005?text=Hello%20Mohammed,%20I%20saw%20your%20website%20and%20would%20like%20to%20work%20with%20you."
+         target="_blank"
          class="btn primary">
         Hire Me
       </a>
     </div>
 
+    <div class="contact">
+      <a href="mailto:contact@mnyawe.com">contact@mnyawe.com</a>
+    </div>
   </div>
+
+</section>
+
 </body>
 </html>
