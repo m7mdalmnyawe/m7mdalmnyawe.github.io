@@ -206,6 +206,7 @@ body{
 /* DESKTOP CURSOR */
 
 @media(min-width:769px){
+
   body{cursor:none}
 
   .custom-cursor{
@@ -219,6 +220,7 @@ body{
     z-index:9999;
   }
 }
+
 </style>
 </head>
 
@@ -309,28 +311,33 @@ if(window.innerWidth>768){
     cursor.style.top=e.clientY+"px";
   });
 
-  // RIPPLE ONLY
+  // ORIGINAL RIPPLE
   document.addEventListener("click",(e)=>{
+
     const ripple=document.createElement("div");
+
     ripple.style.position="fixed";
     ripple.style.left=e.clientX+"px";
     ripple.style.top=e.clientY+"px";
-    ripple.style.width="10px";
-    ripple.style.height="10px";
+    ripple.style.width="8px";
+    ripple.style.height="8px";
+    ripple.style.border="2px solid #FBDC86";
     ripple.style.borderRadius="50%";
-    ripple.style.background="rgba(251,220,134,.4)";
-    ripple.style.transform="translate(-50%,-50%)";
+    ripple.style.transform="translate(-50%,-50%) scale(1)";
     ripple.style.pointerEvents="none";
-    ripple.style.transition="all .6s ease";
+    ripple.style.opacity="0.6";
+    ripple.style.transition="all .35s ease-out";
+    ripple.style.zIndex="9998";
+
     document.body.appendChild(ripple);
 
     setTimeout(()=>{
-      ripple.style.width="120px";
-      ripple.style.height="120px";
+      ripple.style.transform="translate(-50%,-50%) scale(3)";
       ripple.style.opacity="0";
     },10);
 
-    setTimeout(()=>ripple.remove(),600);
+    setTimeout(()=>ripple.remove(),350);
+
   });
 
 }
