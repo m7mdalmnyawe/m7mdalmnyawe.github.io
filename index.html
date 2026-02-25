@@ -179,10 +179,48 @@ body {
   .line { margin: 14px auto 22px; }
 
   .buttons { justify-content: center; }
-
   .socials { justify-content: center; }
 }
 
+/* ================= CUSTOM CURSOR (Desktop Only) ================= */
+
+@media (min-width: 769px) {
+
+  body { cursor: none; }
+
+  .custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #FBDC86;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease-out;
+    z-index: 9999;
+  }
+
+  .cursor-click {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #FBDC86;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+    animation: ripple 0.35s ease-out forwards;
+    z-index: 9998;
+  }
+
+  @keyframes ripple {
+    to {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }
+
+}
 </style>
 </head>
 
@@ -224,18 +262,10 @@ body {
     </div>
 
     <div class="socials">
-      <a href="https://www.facebook.com/m.almnyawe/" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.instagram.com/m.mnya/" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/almnyawe/" target="_blank">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="https://www.behance.net/almnyawe" target="_blank">
-        <i class="fab fa-behance"></i>
-      </a>
+      <a href="https://www.facebook.com/m.almnyawe/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/m.mnya/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/almnyawe/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.behance.net/almnyawe" target="_blank"><i class="fab fa-behance"></i></a>
     </div>
 
     <div class="contact">
@@ -247,7 +277,8 @@ body {
 </section>
 
 <script>
-/* ========= Download Rename ========= */
+
+/* ===== Download Rename ===== */
 function downloadFile(e, url, filename) {
   e.preventDefault();
   fetch(url)
@@ -260,7 +291,7 @@ function downloadFile(e, url, filename) {
     });
 }
 
-/* ========= Subtle Circle Parallax (Desktop Only) ========= */
+/* ===== Circle Parallax (Desktop) ===== */
 if (window.innerWidth > 768) {
   const wrapper = document.getElementById("imageWrapper");
 
@@ -277,7 +308,28 @@ if (window.innerWidth > 768) {
     wrapper.style.setProperty("--moveX", "0px");
     wrapper.style.setProperty("--moveY", "0px");
   });
+
+  /* ===== Custom Cursor ===== */
+  const cursor = document.createElement("div");
+  cursor.classList.add("custom-cursor");
+  document.body.appendChild(cursor);
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.addEventListener("click", (e) => {
+    const ripple = document.createElement("div");
+    ripple.classList.add("cursor-click");
+    ripple.style.left = e.clientX + "px";
+    ripple.style.top = e.clientY + "px";
+    document.body.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 350);
+  });
 }
+
 </script>
 
 </body>
