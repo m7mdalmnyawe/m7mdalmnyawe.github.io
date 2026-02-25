@@ -24,10 +24,14 @@ body {
   align-items: center;
   justify-content: center;
   gap: 90px;
-  padding: 40px;
+  padding: 60px;
 }
 
-.image-wrapper { position: relative; }
+/* Image Section */
+
+.image-wrapper {
+  position: relative;
+}
 
 .image-wrapper::before {
   content: "";
@@ -47,6 +51,8 @@ body {
   z-index: 1;
   filter: drop-shadow(0 25px 50px rgba(0,0,0,0.08));
 }
+
+/* Text Section */
 
 .content h1 {
   font-size: 42px;
@@ -68,6 +74,8 @@ body {
   margin: 20px 0 35px;
 }
 
+/* Buttons */
+
 .buttons {
   display: flex;
   gap: 15px;
@@ -85,7 +93,9 @@ body {
   transition: 0.25s ease;
 }
 
-.btn:hover { transform: translateY(-3px); }
+.btn:hover {
+  transform: translateY(-3px);
+}
 
 .primary {
   background: #FBDC86;
@@ -93,7 +103,11 @@ body {
   font-weight: 600;
 }
 
-.primary:hover { background: #f3cf70; }
+.primary:hover {
+  background: #f3cf70;
+}
+
+/* Social Icons */
 
 .socials {
   display: flex;
@@ -121,6 +135,8 @@ body {
   transform: translateY(-5px);
 }
 
+/* Contact */
+
 .contact a {
   color: #3e5e54;
   text-decoration: none;
@@ -128,21 +144,54 @@ body {
   font-size: 14px;
 }
 
-@media (max-width: 950px) {
+/* ========================= */
+/* ===== Mobile Fix ======== */
+/* ========================= */
+
+@media (max-width: 768px) {
+
   .hero {
     flex-direction: column;
     text-align: center;
-    gap: 50px;
+    gap: 40px;
+    padding: 40px 20px;
   }
 
-  .buttons { justify-content: center; }
-  .socials { justify-content: center; }
-
   .image-wrapper::before {
+    width: 180px;
+    height: 180px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .profile-img {
+    width: 300px;
+  }
+
+  .content h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .line {
+    margin: 15px auto 25px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
+
+  .socials {
+    justify-content: center;
+  }
 }
+
 </style>
 </head>
 
@@ -179,7 +228,6 @@ body {
       </a>
     </div>
 
-    <!-- ترتيب الأيقونات الجديد -->
     <div class="socials">
       <a href="https://www.facebook.com/m.almnyawe/" target="_blank">
         <i class="fab fa-facebook-f"></i>
