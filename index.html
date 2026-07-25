@@ -16,6 +16,7 @@
  --line:#7fa397;
  --accent:#FBDC86;
  --card:#ffffff;
+ --grid-color:rgba(31,42,38,.055);
 }
 body.dark{
  --bg:#101214;
@@ -24,6 +25,7 @@ body.dark{
  --line:#6d8a80;
  --accent:#E9B44C;
  --card:#1a1d20;
+ --grid-color:rgba(255,255,255,.045);
 }
 
 *{box-sizing:border-box}
@@ -32,8 +34,26 @@ body{
   transition:background .35s,color .35s;
   margin:0;
   font-family:'Inter',sans-serif;
-  background:var(--bg);
+  background-color:var(--bg);
   color:var(--text);
+}
+
+
+.grid-bg{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+background-image:
+radial-gradient(circle 170px at var(--mx,50%) var(--my,50%),
+rgba(233,180,76,.18) 0%,
+rgba(233,180,76,.08) 28%,
+transparent 70%),
+linear-gradient(var(--grid-color) 1px,transparent 1px),
+linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+background-size:auto,48px 48px,48px 48px;
+transition:transform .15s ease-out, background .08s linear;
+will-change:transform,background;
 }
 
 /* HERO */
@@ -195,6 +215,31 @@ body.dark .theme-switch .thumb{transform:translateX(34px);background:#222}
 body.dark .theme-switch .sun{color:#707070;}
 body.dark .theme-switch .moon{color:#ffd54a;}
 
+
+.hero,.content>*,.image-wrapper{
+opacity:0;
+}
+body.loaded .hero{animation:fadeHero .7s ease forwards;}
+body.loaded .image-wrapper{animation:up .8s .1s ease forwards;}
+body.loaded .content>*{animation:up .7s ease forwards;}
+body.loaded .content>*:nth-child(1){animation-delay:.15s}
+body.loaded .content>*:nth-child(2){animation-delay:.25s}
+body.loaded .content>*:nth-child(3){animation-delay:.35s}
+body.loaded .content>*:nth-child(4){animation-delay:.45s}
+body.loaded .content>*:nth-child(5){animation-delay:.55s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeHero{to{opacity:1}}
+
+.profile-img{transition:transform .35s ease,filter .35s ease;}
+.image-wrapper:hover .profile-img{
+ transform:scale(1.02);
+ filter:drop-shadow(0 35px 60px rgba(0,0,0,.18));
+}
+.image-wrapper:hover::before{
+ transform:translate(var(--moveX),var(--moveY)) scale(1.08);
+}
+.btn{transition:transform .25s ease;}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -270,6 +315,7 @@ body.dark .theme-switch .moon{color:#ffd54a;}
 </head>
 
 <body>
+<div class="grid-bg"></div>
 <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">
 <span class="sun"><i class="fa-solid fa-sun"></i></span><span class="thumb"></span><span class="moon"><i class="fa-solid fa-moon"></i></span>
 </button>
@@ -403,6 +449,30 @@ t.onclick=()=>{
  localStorage.setItem('theme',d?'dark':'light');
  apply();
 };
+
+
+const grid=document.querySelector('.grid-bg');
+document.addEventListener('mousemove',(e)=>{
+ const x=(e.clientX/window.innerWidth-0.5)*18;
+ const y=(e.clientY/window.innerHeight-0.5)*18;
+ grid.style.transform=`translate(${x}px,${y}px)`;
+ grid.style.setProperty('--mx',e.clientX+'px');
+ grid.style.setProperty('--my',e.clientY+'px');
+});
+
+
+window.addEventListener('load',()=>document.body.classList.add('loaded'));
+
+const hire=document.querySelector('.primary');
+if(hire){
+hire.addEventListener('mousemove',e=>{
+ const r=hire.getBoundingClientRect();
+ const x=(e.clientX-r.left-r.width/2)/8;
+ const y=(e.clientY-r.top-r.height/2)/8;
+ hire.style.transform=`translate(${x}px,${y}px)`;
+});
+hire.addEventListener('mouseleave',()=>hire.style.transform='translate(0,0)');
+}
 
 </script>
 
